@@ -8,8 +8,8 @@ import paramiko
 nbytes = 4096
 hostname = '10.1.1.50'
 port = 22
-username = 'root' 
-password = 'test-935'
+username = 'xxx' 
+password = 'xxx'
 #command = 'ls'
 
 client = paramiko.Transport((hostname, port))
