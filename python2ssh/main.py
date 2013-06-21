@@ -8,8 +8,8 @@ import paramiko
 nbytes = 4096
 hostname = '10.1.1.50'
 port = 22
-username = 'xxx' 
-password = 'xxx'
+username = 'root'
+password = 'test-935'
 #command = 'ls'
 
 client = paramiko.Transport((hostname, port))
@@ -20,10 +20,12 @@ stderr_data = []
 session = client.open_channel(kind='session')
 while True:
     session = client.open_channel(kind='session')
-    x = raw_input("Komut:")
-    session.exec_command(x)
+    command = raw_input("Komut:")
+    session.exec_command(command)
     while True:
         if session.recv_ready():
+            for element in stdout_data:
+                stdout_data.remove(element);
             stdout_data.append(session.recv(nbytes))
         if session.recv_stderr_ready():
             stderr_data.append(session.recv_stderr(nbytes))
